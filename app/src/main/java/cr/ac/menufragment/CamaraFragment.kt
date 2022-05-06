@@ -44,8 +44,7 @@ class CamaraFragment : Fragment() {
 
         val empleadoList = vista.findViewById<ListView>(R.id.empleados_list)
 
-        val empleadoRepository=EmpleadoRepository()
-        val empleadoAdapter= context?.let { EmpleadoAdapter(it, empleadoRepository.datos()) }
+        val empleadoAdapter= context?.let { EmpleadoAdapter(it, EmpleadoRepository.instance.datos()) }
 
         empleadoList.onItemClickListener=
             AdapterView.OnItemClickListener{ parent,view, position, id->

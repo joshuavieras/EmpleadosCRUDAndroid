@@ -4,7 +4,12 @@ import cr.ac.menufragment.entity.Empleado
 
 class EmpleadoRepository {
     val empleados:HashMap<String, Empleado> =HashMap()
-
+    companion object {
+        @JvmStatic
+        val instance by lazy {
+            EmpleadoRepository().apply {  }
+        }
+    }
     constructor(){
         save(Empleado("117830351","Joshua Viera","Recursos Humanos","Secretario",0))
         save(Empleado("117830352","Juan Castro","Suministros","Tesorero",0))
@@ -23,8 +28,13 @@ class EmpleadoRepository {
         save(Empleado("117830389","Amalia Sandí","Recursos Humanos","Secretario",0))
     }
 
-    private fun save(empleado: Empleado){
+    fun save(empleado: Empleado){
         empleados.put(empleado.id, empleado)
+    }
+
+
+    fun delete(id:String){
+        empleados.remove(id)
     }
 
     fun datos():List<Empleado>{

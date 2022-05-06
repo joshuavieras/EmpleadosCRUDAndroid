@@ -9,16 +9,15 @@
     <!-- TODO: Update blank fragment layout -->
 
     <EditText
-        android:id="@+id/identificacionEmpleado2"
+        android:id="@+id/nombreEmpleado2"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
-
         android:layout_marginBottom="160dp"
         android:backgroundTint="#4055C1"
         android:backgroundTintMode="add"
         android:text="Nombre"
-        app:layout_constraintBottom_toTopOf="@+id/puestoEmpleado4"
+        app:layout_constraintBottom_toTopOf="@+id/puestoEmpleado2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -35,7 +34,7 @@
         app:layout_constraintVertical_bias="0.272" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/buttonGuardarAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
@@ -71,7 +70,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/departamentoEmpleado4"
+        android:id="@+id/departamentoEmpleado2"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:layout_marginBottom="132dp"
@@ -98,7 +97,7 @@
         app:layout_constraintVertical_bias="0.757" />
 
     <EditText
-        android:id="@+id/identificacionEmpleado4"
+        android:id="@+id/identificacionEmpleado2"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
@@ -107,7 +106,7 @@
         android:backgroundTint="#4055C1"
         android:backgroundTintMode="add"
         android:text="Identificación"
-        app:layout_constraintBottom_toTopOf="@+id/puestoEmpleado4"
+        app:layout_constraintBottom_toTopOf="@+id/puestoEmpleado2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -137,7 +136,7 @@
         app:layout_constraintVertical_bias="0.582" />
 
     <EditText
-        android:id="@+id/puestoEmpleado4"
+        android:id="@+id/puestoEmpleado2"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
@@ -146,7 +145,7 @@
         android:backgroundTintMode="add"
         android:editable="true"
         android:text="Puesto"
-        app:layout_constraintBottom_toTopOf="@+id/departamentoEmpleado4"
+        app:layout_constraintBottom_toTopOf="@+id/departamentoEmpleado2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 

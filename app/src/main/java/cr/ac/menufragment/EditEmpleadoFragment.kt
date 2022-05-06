@@ -1,5 +1,6 @@
 package cr.ac.menufragment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.view.GravityCompat
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import cr.ac.menufragment.entity.Empleado
+import cr.ac.menufragment.repository.EmpleadoRepository
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,24 +50,65 @@ class EditEmpleadoFragment : Fragment() {
         val departamento=view.findViewById<TextView>(R.id.departamentoEmpleado)
         departamento.setText(empleado?.departamento)
 
-        view.findViewById<Button>(R.id.editCancelar).setOnClickListener{ OnClickClose() }
-        view.findViewById<Button>(R.id.editGuardar).setOnClickListener{ OnClickGuardar() }
+        view.findViewById<Button>(R.id.editEliminar).setOnClickListener{ OnClickEliminar(identificacion.text.toString()) }
+        view.findViewById<Button>(R.id.editGuardar).setOnClickListener{ OnClickGuardar(identificacion.text.toString()) }
 
         return view
     }
 
-    fun OnClickClose(){
-        var fragmento : Fragment = CamaraFragment.newInstance("Camara" )
-        fragmentManager
-            ?.beginTransaction()
-            ?.replace(R.id.home_content, fragmento)
-            ?.commit()
-        activity?.setTitle("Camara")
+    fun OnClickEliminar(identificacion:String){
+
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage("¿Desea modificar el registro?")
+            .setCancelable(false)
+            .setPositiveButton("Sí") { dialog, id ->
+
+                EmpleadoRepository.instance.delete(identificacion)
+                var fragmento : Fragment = CamaraFragment.newInstance("Camara" )
+                fragmentManager
+                    ?.beginTransaction()
+                    ?.replace(R.id.home_content, fragmento)
+                    ?.commit()
+                activity?.setTitle("Camara")
+
+            }
+            .setNegativeButton(
+                "No"
+            ) { dialog, id ->
+                // logica del no
+            }
+        val alert = builder.create()
+        alert.show()
+
+        /**/
     }
-    fun OnClickGuardar(){
-        empleado?.departamento= view?.findViewById<TextView>(R.id.departamentoEmpleado).toString()
-        empleado?.puesto= view?.findViewById<TextView>(R.id.puestoEmpleado).toString()
-        println(view?.findViewById<TextView>(R.id.puestoEmpleado)?.text)
+    fun OnClickGuardar(identificacion:String){
+        val depa:String= view?.findViewById<TextView>(R.id.departamentoEmpleado)?.text.toString()
+        val puesto:String= view?.findViewById<TextView>(R.id.puestoEmpleado)?.text.toString()
+        val nombre:String= view?.findViewById<TextView>(R.id.nombreEmpleado)?.text.toString()
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage("¿Desea modificar el registro?")
+            .setCancelable(false)
+            .setPositiveButton("Sí") { dialog, id ->
+
+                val empleado : Empleado  =  Empleado(identificacion,nombre, depa,puesto,0)
+                EmpleadoRepository.instance.save(empleado)
+                var fragmento : Fragment = CamaraFragment.newInstance("Camara" )
+                fragmentManager
+                    ?.beginTransaction()
+                    ?.replace(R.id.home_content, fragmento)
+                    ?.commit()
+                activity?.setTitle("Camara")
+
+            }
+            .setNegativeButton(
+                "No"
+            ) { dialog, id ->
+                // logica del no
+            }
+        val alert = builder.create()
+        alert.show()
+
     }
     companion object {
         /**

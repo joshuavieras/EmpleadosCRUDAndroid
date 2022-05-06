@@ -1,11 +1,15 @@
 package cr.ac.menufragment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import cr.ac.menufragment.entity.Empleado
+import cr.ac.menufragment.repository.EmpleadoRepository
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,11 +36,41 @@ class AddEmpleadoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         val view:View= inflater.inflate(R.layout.fragment_add_empleado, container, false)
         view.findViewById<Button>(R.id.agregarCancelar).setOnClickListener{ OnClickClose() }
-
+        view.findViewById<Button>(R.id.buttonGuardarAgregar).setOnClickListener{ OnClickGuardar() }
+        view.findViewById<Button>(R.id.agregarCancelar).setOnClickListener{ OnClickClose() }
         return view
+    }
+    fun OnClickGuardar(){
+
+        val depa:String= view?.findViewById<TextView>(R.id.departamentoEmpleado2)?.text.toString()
+        val puesto:String= view?.findViewById<TextView>(R.id.puestoEmpleado2)?.text.toString()
+        val nombre:String= view?.findViewById<TextView>(R.id.nombreEmpleado2)?.text.toString()
+        val identificacion:String=view?.findViewById<TextView>(R.id.identificacionEmpleado2)?.text.toString()
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage("¿Desea agregar el registro?")
+            .setCancelable(false)
+            .setPositiveButton("Sí") { dialog, id ->
+
+                val empleado  =  Empleado(identificacion,nombre, depa,puesto,0)
+                EmpleadoRepository.instance.save(empleado)
+                var fragmento : Fragment = CamaraFragment.newInstance("Camara" )
+                fragmentManager
+                    ?.beginTransaction()
+                    ?.replace(R.id.home_content, fragmento)
+                    ?.commit()
+                activity?.setTitle("Camara")
+
+            }
+            .setNegativeButton(
+                "No"
+            ) { dialog, id ->
+                // logica del no
+            }
+        val alert = builder.create()
+        alert.show()
+
     }
     fun OnClickClose(){
         var fragmento : Fragment = CamaraFragment.newInstance("Camara" )

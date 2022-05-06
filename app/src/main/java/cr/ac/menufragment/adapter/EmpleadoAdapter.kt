@@ -22,7 +22,10 @@ class EmpleadoAdapter(context:Context, empleados:List<Empleado>) : ArrayAdapter<
 
         val puesto=rowView.findViewById<TextView>(R.id.empleado_puesto)
 
+
+
         val empleado = getItem(position)
+
         nombre.setText(empleado?.nombre)
         puesto.setText(empleado?.puesto)
         imagen.setImageResource(R.drawable.ic_launcher_foreground)
