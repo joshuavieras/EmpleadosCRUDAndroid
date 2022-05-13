@@ -16,10 +16,9 @@
         android:layout_marginBottom="160dp"
         android:backgroundTint="#4055C1"
         android:backgroundTintMode="add"
-        android:text="Nombre"
+        android:hint="Nombre"
         app:layout_constraintBottom_toTopOf="@+id/puestoEmpleado2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -56,18 +55,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/avatarAdd"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="148dp"
         android:layout_marginTop="40dp"
         android:outlineProvider="none"
-        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
-        app:strokeColor="@color/teal_700"
-        app:strokeWidth="1dp"
-        android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        app:strokeColor="@color/teal_700"
+        app:strokeWidth="1dp" />
 
     <EditText
         android:id="@+id/departamentoEmpleado2"
@@ -76,12 +75,11 @@
         android:layout_marginBottom="132dp"
         android:backgroundTint="#4055C1"
         android:backgroundTintMode="add"
-        android:text="Departamento"
+        android:hint="Departamento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.627"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
@@ -104,10 +102,9 @@
         android:layout_marginBottom="56dp"
         android:backgroundTint="#4055C1"
         android:backgroundTintMode="add"
-        android:text="Identificación"
+        android:hint="Identificación"
         app:layout_constraintBottom_toTopOf="@+id/puestoEmpleado2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView15"
@@ -143,9 +140,8 @@
         android:backgroundTint="#4055C1"
         android:backgroundTintMode="add"
         android:editable="true"
-        android:text="Puesto"
+        android:hint="Puesto"
         app:layout_constraintBottom_toTopOf="@+id/departamentoEmpleado2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

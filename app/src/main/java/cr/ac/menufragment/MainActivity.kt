@@ -2,6 +2,7 @@ package cr.ac.menufragment
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.StrictMode
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         var navigationView:NavigationView=findViewById(R.id.navigation_view)
         navigationView.setNavigationItemSelectedListener(this)
 
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
